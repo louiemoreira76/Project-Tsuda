@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gerenciamento de Produto</title>
     <link rel="stylesheet" href="../styles/newOrChange.css">
+    <link rel="stylesheet" href="../components/footer.css">
     <script src="../api/api.js"></script>
 </head>
 
@@ -65,22 +66,24 @@
             description: document.getElementById('description').value
         };
 
-        if (!name || !manufacturer || !price || !quantity || !description) {
+        if (!dados.name || !dados.manufacturer || !dados.price || !dados.quantity || !dados.description) {
         alert("Todos os campos são obrigatórios!");
         return; 
         }
 
-        if (description.length < 10) {
+        if (dados.description.length < 10) {
         alert("A descrição deve ter no mínimo 10 caracteres!");
         return;
         }
 
-
+        if (dados.price <= 0 || dados.quantity <= 0) {
+        alert("Valores como preço ou quantidade devem ser maiores que 0!")
+        return;
+        }
 
         if(productId) {
             updateProduct(productId, dados);
         } else {
-            
             saveProduct(dados);
         }
     }

@@ -1,6 +1,7 @@
 body {
+    padding-bottom: 60px;
     font-family: Arial, sans-serif;
-    background: #f2f2f2;
+    background: rgb(196, 196, 196);
 }
 
 .container {
@@ -28,7 +29,7 @@ body {
 }
 
 .alterar {
-    background: #007bdb;
+    background: #db9005;
     color: white;
     padding: 8px 15px;
     border: none;
@@ -65,4 +66,56 @@ body {
     text-align: center;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sim {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sim:hover {
+    background-color: #1e7e34;
+}
+
+.nao {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nao:hover {
+    background-color: #b02a37; 
+}
+
+
+
+.estoque-baixo {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 4px 10px;
+
+    background-color: #ff8c00;
+    color: white;
+
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+
+    animation: piscar 1s infinite alternate;
+}
+
+@keyframes piscar {
+    from { opacity: 1; }
+    to { opacity: 0.6; }
 }

@@ -5,6 +5,7 @@ body{
     justify-content: flex-start;
     min-height: 100vh;
     margin: 0;
+    padding-bottom: 60px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: white
 }

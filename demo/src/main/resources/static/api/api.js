@@ -16,9 +16,10 @@ async function saveProduct(product) {
          
         if (response.ok) {
         alert('Produto salvo com sucesso!');
+        window.location.href = "allProdutcs.html";
         } else{
             const errorText = await response.text();
-            console.log('Erro detalhado:', errorText);
+            alert("Erro cadastrar produto " + errorText)
         }
     } catch (error) {
         alert('Erro em salvar :' + error.message)
@@ -92,9 +93,10 @@ async function updateProduct(id, product) {
         });
         if (response.ok) {
         alert('Produto salvo com sucesso!');
+        window.location.href = "allProdutcs.html";
         } else{
             const errorText = await response.text();
-            console.log('Erro detalhado:', errorText);
+            alert("Erro na atualização do produto: " + errorText)
         }
     } catch (error) {
         console.log('Erro ao atualizar:', error);
@@ -137,3 +139,10 @@ function confirmarExclusao() {
 function editarProduto(id) {
     window.location.href = `newOrChange.html?id=${id}`;
 }
+
+//???
+fetch('../components/footer.html')
+    .then(res => res.text())
+    .then(html => {
+        document.body.insertAdjacentHTML('beforeend', html);
+    });
