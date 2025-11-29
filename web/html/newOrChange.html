@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../styles/newOrChange.css">
+    <script src="../api/api.js"></script>
 </head>
 
 <body>
@@ -48,9 +49,11 @@
 <script>
     const ParametroUrl = new URLSearchParams(window.location.search);
     const productId = ParametroUrl.get('id');
+    const productForEdit = null;
 
     if(productId){
-        document.getElementById("titulo").innerHTML = `Alterar produto - ID ${productId}` 
+        console.log("EDITAR!!!" + productId)
+        carregarProduto(productId);
     }
 
      function salvar() {
@@ -68,6 +71,19 @@
             saveProduct(dados);
         }
     }
+    async function carregarProduto(id) {
+        const produto = await getProductById(id);
+        
+        if(produto) {
+            document.getElementById("titulo").innerHTML = `Alterar produto - ID ${id}`;
+    
+            document.getElementById('name').value = produto.name;
+            document.getElementById('manufacturer').value = produto.manufacturer;
+            document.getElementById('price').value = produto.price;
+            document.getElementById('quantity').value = produto.quantity;
+            document.getElementById('description').value = produto.description;
+        }
+    }
+    
 </script>
-<script src="../api/api.js"></script>
 </html>

@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,6 +31,11 @@ public class ControllerProduct {
     @GetMapping
     public List<Product> getAll(){
         return serviceProduct.getAllProducts();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Product> getId(@PathVariable Long id){
+        return serviceProduct.getById(id);
     }
 
     @PostMapping

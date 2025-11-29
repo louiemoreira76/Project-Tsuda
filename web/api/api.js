@@ -62,6 +62,23 @@ async function getAllProducts() {
     }
 }
 
+async function getProductById(id) {
+    try {
+        const response = await fetch(`${API_URL}/${id}`, {
+            method: 'GET',
+        });
+        if (!response.ok) {
+            console.error(response)
+            return false;
+        }
+        const productData = await response.json();
+        return productData;
+    } catch (error) {
+                console.log('Erro ao deletar:', error);
+        return false;
+    }
+}
+
 // Atualizar produto
 async function updateProduct(id, product) {
     try {
