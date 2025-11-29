@@ -19,28 +19,28 @@
         <section>
             <div>
                 <p>Produto</p>
-                <input type="text" id="name">
+                <input type="text" id="name" required>
             </div>
 
             <div>
                 <p>Fabricante</p>
-                <input type="text" id="manufacturer">
+                <input type="text" id="manufacturer" required>
             </div>
 
             <div>
                 <p>Preço</p>
-                <input type="number" id="price">
+                <input type="number" id="price" required>
             </div>
 
             <div>
                 <p>Quantidade em estoque</p>
-                <input type="number" id="quantity">
+                <input type="number" id="quantity" required>
             </div>
         </section>
 
         <aside>
             <p>Descrição do produto</p>
-            <input type="text" id="description">
+            <input type="text" id="description" required>
         </aside>
 
         <button onclick="salvar()">Salvar</button>
@@ -64,10 +64,23 @@
             quantity: parseInt(document.getElementById('quantity').value),
             description: document.getElementById('description').value
         };
-        
+
+        if (!name || !manufacturer || !price || !quantity || !description) {
+        alert("Todos os campos são obrigatórios!");
+        return; 
+        }
+
+        if (description.length < 10) {
+        alert("A descrição deve ter no mínimo 10 caracteres!");
+        return;
+        }
+
+
+
         if(productId) {
             updateProduct(productId, dados);
         } else {
+            
             saveProduct(dados);
         }
     }
