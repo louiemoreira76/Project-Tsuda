@@ -1,11 +1,37 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+<link rel="stylesheet" href="../styles/allProdutcs.css">
 </head>
+
 <body>
-    
+    <div class="container">
+        <h1>Gerenciamento de Produtos</h1>
+
+        <div id="listaProdutos"></div>
+
+        <a href="newOrChange.html" class="novo-produto">Incluir novo produto</a>
+    </div>
+
+    <div class="popup-bg" id="popup">
+        <div class="popup">
+            <p id="mensagemPopup"></p>
+            <button class="sim" onclick="confirmarExclusao()">SIM</button>
+            <button class="nao" onclick="fecharPopup()">NÃO</button>
+        </div>
+    </div>
+    <script src="../api/api.js"></script>
+    <script>
+         window.onload = function() {
+            console.log('Página carregada, chamando getAllProducts...');
+            getAllProducts();
+        }
+    </script>
 </body>
+
 </html>

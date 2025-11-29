@@ -1,11 +1,73 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../styles/newOrChange.css">
 </head>
+
 <body>
-    
+    <header>
+        <h1 id="titulo">Gerenciamento de Produtos</h1>
+    </header>
+    <main>
+        <h2><strong>Incluir novo produto</strong></h2>
+
+        <section>
+            <div>
+                <p>Produto</p>
+                <input type="text" id="name">
+            </div>
+
+            <div>
+                <p>Fabricante</p>
+                <input type="text" id="manufacturer">
+            </div>
+
+            <div>
+                <p>Preço</p>
+                <input type="number" id="price">
+            </div>
+
+            <div>
+                <p>Quantidade em estoque</p>
+                <input type="number" id="quantity">
+            </div>
+        </section>
+
+        <aside>
+            <p>Descrição do produto</p>
+            <input type="text" id="description">
+        </aside>
+
+        <button onclick="salvar()">Salvar</button>
+    </main>
 </body>
+<script>
+    const ParametroUrl = new URLSearchParams(window.location.search);
+    const productId = ParametroUrl.get('id');
+
+    if(productId){
+        document.getElementById("titulo").innerHTML = `Alterar produto - ID ${productId}` 
+    }
+
+     function salvar() {
+        const dados = {
+            name: document.getElementById('name').value,
+            manufacturer: document.getElementById('manufacturer').value,
+            price: parseFloat(document.getElementById('price').value),
+            quantity: parseInt(document.getElementById('quantity').value),
+            description: document.getElementById('description').value
+        };
+        
+        if(productId) {
+            updateProduct(productId, dados);
+        } else {
+            saveProduct(dados);
+        }
+    }
+</script>
+<script src="../api/api.js"></script>
 </html>

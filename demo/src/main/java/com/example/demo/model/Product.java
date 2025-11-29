@@ -6,12 +6,14 @@ import jakarta.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "produt")
 public class Product {
     @Id
@@ -24,5 +26,7 @@ public class Product {
     @Column(nullable = false)
     BigDecimal price;
     @Column(nullable = false)
-    int quantity;
+    Integer quantity;
+    @Column(nullable = false)
+    String description;
 }

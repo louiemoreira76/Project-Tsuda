@@ -31,7 +31,9 @@ public class ServiceProduct {
           // Atualiza os campos
         existingProduct.setName(product.getName());
         existingProduct.setPrice(product.getPrice());
-        //outros campos
+        existingProduct.setQuantity(product.getQuantity());
+        existingProduct.setManufacturer(product.getManufacturer());
+        existingProduct.setDescription(product.getDescription());
 
         return repositoryProduct.save(existingProduct);
     }
